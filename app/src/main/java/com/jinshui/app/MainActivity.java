@@ -38,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
     private ValueCallback<Uri[]> uploadMessage;
 
     // 多入口URL，按优先级排列
+    // 入口=网关登录页(统一登录→角色分流)，登录后进对应系统
     private static final String[] ENTRY_URLS = {
-        "https://76ae250e.r23.cpolar.top/portal/",   // 0: cpolar隧道（金水新苑社区主入口，固定域名）
-        "https://76ae250e.r23.cpolar.top/"            // 1: cpolar根路径（备用）
+        "https://76ae250e.r23.cpolar.top/gateway/",   // 0: 邻音·社区服务网关（登录页，固定域名）
+        "https://76ae250e.r23.cpolar.top/portal/"     // 1: portal首页（备用）
     };
 
     private static final String CHANNEL_ID = "jinshui_notifications";
