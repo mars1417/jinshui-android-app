@@ -208,8 +208,9 @@ public class MainActivity extends AppCompatActivity {
 
                 URL url = new URL(checkUrl);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setConnectTimeout(8000);
-                conn.setReadTimeout(8000);
+                // cpolar公网隧道延迟可达5-6秒，超时必须放宽（8s→30s），否则检查静默失败不弹更新
+                conn.setConnectTimeout(30000);
+                conn.setReadTimeout(30000);
 
                 int code = conn.getResponseCode();
                 if (code != 200) {
@@ -231,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
                 String versionName = extractString(json, "version_name");
 
                 if (remoteVer == 0) {
-                    Log.d("AutoUpdate", "Failed to parse version");
+                    Log.d("AutoUpdate", "Failed to parse version: " + json);
                     return;
                 }
 
