@@ -83,6 +83,12 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setDatabaseEnabled(true);
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setAllowContentAccess(true);
+        // 强制启用缩放（覆盖外部页面 user-scalable=0，如随申办官方页）
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
